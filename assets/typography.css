@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  flex: 1;
+  font-family: sans-serif;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+#react-entry-point {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  line-height: 1.25;
+}

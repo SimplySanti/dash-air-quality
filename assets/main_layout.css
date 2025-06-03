@@ -1,0 +1,66 @@
+.windowContainer {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	height: 100vh;
+	width: 100vw;
+}
+
+.sidebarContainer {
+	width: 220px;
+	min-height: 100%;
+	background-color: #000000;
+	color: #ffffff;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 30px;
+	padding-bottom: 60px;
+}
+
+.sidebarOptions a {
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 16px;
+	line-height: 22px;
+	padding: 0;
+	display: block;
+}
+
+.sidebarOptions {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content: space-between;
+	padding-bottom: 40px;
+}
+
+.logoContainer {
+	margin-bottom: 60px;
+}
+
+.logoContainer img {
+	width: 100%;
+	height: auto;
+	max-width: 220px;
+}
+
+.pageContent {
+	flex: 1;
+	height: 100%;
+	background-color: #ffffff;
+	color: #000000;
+	padding-left: 90px;
+	padding-top: 48px;
+	overflow-y: auto;
+  display: flex;
+	@media (min-width: 768px) {
+		padding-right: 300px;
+	}
+}
+
+.secondaryText {
+	color: #3f3f3f;
+	font-size: 16px;
+	line-height: 20px;
+}
