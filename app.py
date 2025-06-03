@@ -4,6 +4,7 @@ import plotly.express as px
 import pandas as pd
 
 app = Dash(__name__, use_pages=True)
+server = app.server
 
 # Requires Dash 2.17.0 or later
 app.layout = html.Div(
