@@ -278,7 +278,7 @@ layout = html.Div(
                     className="h-100 w-50 w-sm-100 w-xs-100",
                     children=[
                         html.H6(
-                            className="mb-3 text-muted", children=["Calidad del Aire"]
+                            className="mb-3 text-muted", children=["Calidad General del Aire"]
                         ),
                         html.Div(
                             className="d-flex flex-column align-items-center gap-2 h-100 mb-1",
