@@ -2,67 +2,66 @@ import dash
 from dash import Dash, html, dcc, callback, Output, Input
 import plotly.express as px
 import pandas as pd
+import dash_bootstrap_components as dbc
 
-app = Dash(__name__, use_pages=True)
+
+dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
+app = Dash(
+    __name__,
+    use_pages=True,
+    external_stylesheets=[dbc.themes.LITERA, dbc_css, dbc.icons.FONT_AWESOME],
+)
 server = app.server
 
-# Requires Dash 2.17.0 or later
-app.layout = html.Div(
-    className="windowContainer",
-    children=[
-        html.Div(
-            className="sidebarContainer",
-            children=[
-                html.Div(
-                    className="logoContainer",
-                    children=[
-                        html.Img(
-                            src="/assets/perficientLogo.png",
-                        ),
-                    ],
-                ),
-                html.Div(
-                    className="sidebarOptions",
-                    children=[
-                        html.Div(
-                            className="sidebarLinks",
-                            children=[
-                                dcc.Link(
-                                    [
-                                        html.Span(" ▶", style={"marginRight": "12px"}),
-                                        html.Span("Inicio"),
-                                    ],
-                                    href="/",
-                                ),
-                                html.Br(),
-                                dcc.Link(
-                                    [
-                                        html.Span(" ▶", style={"marginRight": "12px"}),
-                                        html.Span("Informacion"),
-                                    ],
-                                    href="/informacion",
-                                ),
-                                html.Br(),
-                                dcc.Link(
-                                    [
-                                        html.Span(" ▶", style={"marginRight": "12px"}),
-                                        html.Span("Recursos"),
-                                    ],
-                                    href="/recursos",
-                                ),
-                            ],
-                        ),
-                        html.Div(
-                            children=[
-                                html.P("Made with ♡ by students from Tec de Monterrey"),
-                            ],
-                        ),
-                    ],
-                ),
-            ],
+SIDEBAR_STYLE = {
+    "position": "fixed",
+    "top": 0,
+    "left": 0,
+    "bottom": 0,
+    "width": "16rem",
+    "padding": "2rem 1rem",
+    "background-color": "#f8f9fa",
+}
+
+CONTENT_STYLE = {
+    "margin-left": "18rem",
+    "padding": "2rem 1rem",
+    "flex": "1",
+    "min-height": "100vh",  # This makes the content take full viewport height
+}
+
+sidebar = html.Div(
+    [
+        html.Img(
+            className="img-fluid mb-2",
+            src="/assets/perficientLogo.png",
         ),
+        html.Hr(),
+        html.P("Made by Students from Tec de Monterrey", className="lead"),
+        dbc.Nav(
+            className="flex-column",
+            children=[
+                dbc.NavLink("Inicio", href="/", active="exact"),
+                dbc.NavLink("Insights", href="/insights", active="exact"),
+                dbc.NavLink("Análisis", href="/analisis", active="exact"),
+                dbc.NavLink("Modelado", href="/modelado", active="exact"),
+                dbc.NavLink("Recursos", href="/recursos", active="exact"),
+            ],
+            vertical=True,
+            pills=True,
+        ),
+    ],
+    style=SIDEBAR_STYLE,
+)
+
+app.layout = html.Div(
+    className="d-flex",
+    children=[
+        sidebar,
         html.Div(
-            className="pageContent", id="pageContent", children=[dash.page_container]
+            style=CONTENT_STYLE,
+            className="pe-5",
+            children=[dash.page_container],
         ),
     ],
 )
